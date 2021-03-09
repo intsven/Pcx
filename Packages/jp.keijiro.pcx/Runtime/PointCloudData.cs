@@ -11,6 +11,8 @@ namespace Pcx
     {
         #region Public properties
 
+        
+
         /// Byte size of the point element.
         public const int elementSize = sizeof(float) * 4;
 
@@ -51,19 +53,20 @@ namespace Pcx
         #region Serialized data members
 
         [System.Serializable]
-        struct Point
+        public struct Point
         {
             public Vector3 position;
             public uint color;
         }
 
-        [SerializeField] Point[] _pointData;
+        [SerializeField] public Point[] _pointData;
+        //Point[] _pointData;
 
         #endregion
 
         #region Editor functions
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
 
         static uint EncodeColor(Color c)
         {

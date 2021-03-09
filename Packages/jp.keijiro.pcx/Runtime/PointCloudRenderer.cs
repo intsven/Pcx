@@ -42,6 +42,18 @@ namespace Pcx
 
         #region Internal resources
 
+        public Shader pointShader
+        {
+            get { return _pointShader; }
+            set { _pointShader = value; }
+        }
+
+        public Shader diskShader
+        {
+            get { return _diskShader; }
+            set { _diskShader = value; }
+        }
+
         [SerializeField, HideInInspector] Shader _pointShader = null;
         [SerializeField, HideInInspector] Shader _diskShader = null;
 
