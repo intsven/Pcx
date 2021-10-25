@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2F9423CF-A270-7A51-017F-9DC7C3A59C81}</ProjectGuid>
+    <ProjectGuid>{22736D00-BB80-FCD8-3FDE-9A66D3823E82}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Pcx.Editor</AssemblyName>
+    <AssemblyName>Siccity.GLTFUtility</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -48,7 +48,7 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>4.9.1.0</UnityProjectGeneratorVersion>
-    <UnityProjectType>Editor:5</UnityProjectType>
+    <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2019.4.22f1</UnityVersion>
   </PropertyGroup>
@@ -64,16 +64,44 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packages\jp.keijiro.pcx\Editor\MaterialInspector.cs" />
-    <Compile Include="Packages\jp.keijiro.pcx\Editor\PlyImporter.cs" />
-    <Compile Include="Packages\jp.keijiro.pcx\Editor\PlyImporterInspector.cs" />
-    <Compile Include="Packages\jp.keijiro.pcx\Editor\PointCloudDataInspector.cs" />
-    <Compile Include="Packages\jp.keijiro.pcx\Editor\PointCloudRendererInspector.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\BufferedBinaryReader.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Converters\ColorConverter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Converters\EnumConverter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Converters\Matrix4x4Converter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Converters\QuaternionConverter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Converters\TranslationConverter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Converters\Vector2Converter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Converters\Vector3Converter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Enums.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Exporter.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Extensions.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Extensions\KHR_texture_transform.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Importer.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Settings\AnimationSettings.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Settings\ImportSettings.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Settings\ShaderSettings.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFAccessor.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFAnimation.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFAsset.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFBuffer.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFBufferView.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFCamera.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFImage.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFMaterial.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFMesh.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFNode.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFObject.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFPrimitive.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFProperty.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFScene.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFSkin.cs" />
+    <Compile Include="Assets\GLTFUtility\Scripts\Spec\GLTFTexture.cs" />
+    <None Include="Assets\GLTFUtility\Materials\Built-in\Standard-Metallic-Blend.shader" />
+    <None Include="Assets\GLTFUtility\Materials\Built-in\Standard-Specular.shader" />
+    <None Include="Assets\GLTFUtility\Materials\Built-in\Standard-Metallic.shader" />
+    <None Include="Assets\GLTFUtility\Materials\Built-in\Standard-Specular-Blend.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AIModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ARModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
@@ -81,20 +109,11 @@
     <Reference Include="UnityEngine.AccessibilityModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.AndroidJNIModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AndroidJNIModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.AnimationModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.AudioModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClothModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClusterInputModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>
@@ -150,14 +169,8 @@
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.ProfilerModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ProfilerModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll</HintPath>
@@ -180,35 +193,14 @@
     <Reference Include="UnityEngine.TLSModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TLSModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextCoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UNETModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UmbraModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UmbraModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityConnectModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll</HintPath>
@@ -219,32 +211,11 @@
     <Reference Include="UnityEngine.UnityWebRequestModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VFXModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VFXModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VideoModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.WindModule">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
@@ -638,9 +609,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Pcx.csproj">
-      <Project>{CF5E7FBE-AC1A-AD5F-0C25-5C2C40A83456}</Project>
-      <Name>Pcx</Name>
+    <ProjectReference Include="Dracodec.csproj">
+      <Project>{6B4AE62E-F0CC-2FBB-20C8-15FC68339A79}</Project>
+      <Name>Dracodec</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

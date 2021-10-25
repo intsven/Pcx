@@ -31,6 +31,11 @@ namespace Pcx
                 }
                 return _pointBuffer;
             }
+            set { 
+                _pointBuffer = value;
+                //_pointData = new Point[_pointBuffer.count / elementSize];
+                //_pointBuffer.GetData(_pointData);
+            }
         }
 
         #endregion

@@ -132,6 +132,9 @@ GameObject:
   - component: {fileID: 30397070}
   - component: {fileID: 30397072}
   - component: {fileID: 30397071}
+  - component: {fileID: 30397073}
+  - component: {fileID: 30397075}
+  - component: {fileID: 30397074}
   m_Layer: 0
   m_Name: PCloudRealtime
   m_TagString: Untagged
@@ -165,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d2a6bddec0598438a00f6f44783fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointSize: 0.03
 --- !u!114 &30397072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +184,68 @@ MonoBehaviour:
   pManager: {fileID: 30397071}
   pContainer: {fileID: 168045302}
   queueSize: 0
+--- !u!114 &30397073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30397069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a788bbb8d9598f24b862242a27fe2a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: ws://192.168.178.22:8765
+  path: /camera/points
+  text: {fileID: 4900000, guid: 852d5a448c764d94e8a727da3241a527, type: 3}
+--- !u!33 &30397074
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30397069}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &30397075
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30397069}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b86939e68c0e6ab4d8af2cdebe0d3ff8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &100528306
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d2a6bddec0598438a00f6f44783fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointSize: 0
 --- !u!114 &100528308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,13 +343,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168045300}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &490657464
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +394,7 @@ Camera:
   m_GameObject: {fileID: 490657464}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -369,7 +436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490657464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.49, z: -13.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -402,12 +469,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636425884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 599399f87ee56d541ac06a68cbe1fc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Topic: /camera/points
+  Topic: /map/cloud
   TimeStep: 0
   MessageReceiver: {fileID: 30397072}
 --- !u!114 &636425886
@@ -422,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9b8f32224ca04498ffd0a2e2bc0567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RosBridgeServerUrl: ws://192.168.178.132:9090
+  RosBridgeServerUrl: ws://192.168.178.22:9090
 --- !u!4 &636425887
 Transform:
   m_ObjectHideFlags: 0
@@ -467,6 +534,70 @@ MonoBehaviour:
   Topic: /realtime_cloud_pose
   TimeStep: 0.01
   MessageReceiver: {fileID: 168045301}
+--- !u!1 &718130575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718130576}
+  - component: {fileID: 718130577}
+  - component: {fileID: 718130578}
+  m_Layer: 0
+  m_Name: WSPointCloud
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718130576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718130575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.4692783, y: 0.46601692, z: 9.637241}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &718130577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718130575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ed732caaf616443a6e0ed806f5d61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: ws://192.168.178.22:8765
+  path: /map/cloud
+--- !u!114 &718130578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718130575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5900aba1767854aa98592c99eb8b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderingEnabled: 1
+  _sourceData: {fileID: 0}
+  _pointTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  _pointSize: 0.05
+  _pointShader: {fileID: 4800000, guid: 1baec256dca7c1642b87d05510e75a3f, type: 3}
+  _diskShader: {fileID: 4800000, guid: 7ebf1f15e5b03014d92704caa6c97e2e, type: 3}
 --- !u!1 &1264320862
 GameObject:
   m_ObjectHideFlags: 0

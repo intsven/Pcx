@@ -1,7 +1,9 @@
 ﻿using Pcx;
 using RosSharp.RosBridgeClient;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
 
@@ -26,28 +28,50 @@ public class PCloudThread
         while(true)
         {
             while (pcQueue.Count == 0) ;
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             SensorPointCloud2 sensorPointCloud2 = pcQueue.Dequeue();
+            UnityEngine.Debug.Log("pcQueue.Dequeue(): " + sw.Elapsed.TotalMilliseconds);
             pCloud = new PCloud(sensorPointCloud2);
+            UnityEngine.Debug.Log("new PCloud: " + sw.Elapsed.TotalMilliseconds);
             points = Initialize(pCloud.vertices, pCloud.colors);
+            UnityEngine.Debug.Log("Initialize: " + sw.Elapsed.TotalMilliseconds);
             threadFinished = true;
-            Debug.Log("test");
         }
     }
 
-    static uint EncodeColor(Color c)
+    static uint EncodeColor(Color c, int i)
     {
         const float kMaxBrightness = 16;
 
         var y = Mathf.Max(Mathf.Max(c.r, c.g), c.b);
         y = Mathf.Clamp(Mathf.Ceil(y * 255 / kMaxBrightness), 1, 255);
+        if (i == 0)
+            UnityEngine.Debug.Log(y);
 
         var rgb = new Vector3(c.r, c.g, c.b);
         rgb *= 255 * 255 / (y * kMaxBrightness);
 
-        return ((uint)rgb.x) |
+        //UnityEngine.Debug.Log(c.r + " " + TestPC.ByteArrayToString(BitConverter.GetBytes((uint)rgb.x)));
+
+        var ret = ((uint)rgb.x) |
                ((uint)rgb.y << 8) |
                ((uint)rgb.z << 16) |
                ((uint)y << 24);
+        if (i == 0)
+        {
+            UnityEngine.Debug.Log(TestPC.ByteArrayToString(BitConverter.GetBytes(ret)) + "  " + rgb.x);
+        }
+            
+        return ret;
+    }
+
+    static uint EncodeColor2(Color c)
+    {
+        return ((uint)(c.r * 255)) |
+               ((uint)(c.g * 255) << 8) |
+               ((uint)(c.b * 255) << 16) |
+               ((uint)(c.a * 255) << 24);
     }
 
     public PointCloudData.Point[] Initialize(List<Vector3> positions, List<Color32> colors)
@@ -58,7 +82,7 @@ public class PCloudThread
             _pointData[i] = new PointCloudData.Point
             {
                 position = positions[i],
-                color = EncodeColor(colors[i])
+                color = EncodeColor(colors[i], i)
             };
         }
         return _pointData;

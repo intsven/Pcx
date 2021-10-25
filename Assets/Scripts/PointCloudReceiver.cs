@@ -45,6 +45,15 @@ namespace RosSharp.RosBridgeClient
                 go.transform.localRotation = Quaternion.identity;
                 go.transform.localScale = new Vector3(1, 1, 1);
             }
+
+            var rgb = Vector3.one * 182.9653f;
+
+            var uuint = ((uint)rgb.x) |
+                   ((uint)rgb.y << 8) |
+                   ((uint)rgb.z << 16) |
+                   ((uint)0 << 24);
+            UnityEngine.Debug.Log("(uint) " + TestPC.ByteArrayToString(BitConverter.GetBytes(uuint)));
+            UnityEngine.Debug.Log("(uint2) " + TestPC.ByteArrayToString(BitConverter.GetBytes((uint) 182.9653)));
         }
 
         private void ReceiveMessage(object sender, MessageEventArgs e)
@@ -93,7 +102,8 @@ namespace RosSharp.RosBridgeClient
 
             if (lastGo)
             {
-                lastGo.GetComponent<PointCloudRenderer>().enabled = false;
+                if(lastGo.GetComponent<PointCloudRenderer>())
+                    lastGo.GetComponent<PointCloudRenderer>().enabled = false;
                 lastGo = null;
             }
                 
@@ -104,18 +114,18 @@ namespace RosSharp.RosBridgeClient
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 //gos[curGO].SetActive(false);
-                
+
+                var curGONow = getCurGO();
+                pManager.FinishImport(curGONow);
+                if(curGONow.GetComponent<PointCloudRenderer>())
+                    curGONow.GetComponent<PointCloudRenderer>().enabled = true;
 
                 lastGo = gos[curGO];
-
-
-                pManager.FinishImport(getCurGO());
-                if(gos[curGO].GetComponent<PointCloudRenderer>())
-                    gos[curGO].GetComponent<PointCloudRenderer>().enabled = true;
-                
                 //gos[curGO].SetActive(true);
                 sw.Stop();
-                UnityEngine.Debug.Log("FinishImport: " + sw.Elapsed.TotalMilliseconds);
+                UnityEngine.Debug.Log("FinishImport: " + sw.Elapsed.TotalMilliseconds + ", Point Count: " + pManager.thread.points.Length);
+
+                TestPC.writePCtoFile(curGONow.GetComponent<PointCloudRenderer>().sourceData, "receivedPC.bin");
             }
             
             
@@ -127,12 +137,6 @@ namespace RosSharp.RosBridgeClient
 
         private void ProcessMessage()
         {
-            
-
-
-
-
-
             //pManager.LoadPointCloud(go, pCloud);
             pManager.LoadPointCloud(msg);
             isMessageReceived = false;

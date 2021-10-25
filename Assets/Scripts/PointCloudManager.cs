@@ -10,6 +10,7 @@ using System.Threading;
 public class PointCloudManager : MonoBehaviour
 {
     public PCloudThread thread = new PCloudThread();
+    public float pointSize = 0;
 
     public void LoadPointCloud(SensorPointCloud2 pCloud)
     {
@@ -33,7 +34,7 @@ public class PointCloudManager : MonoBehaviour
             renderer.pointShader = Shader.Find("Point Cloud/Point");
             renderer.diskShader = Shader.Find("Point Cloud/Disk");
 
-            renderer.pointSize = 0.0f;
+            renderer.pointSize = pointSize;
         }
 
 
@@ -45,7 +46,7 @@ public class PointCloudManager : MonoBehaviour
     public void FinishImport(GameObject go)
     {
         //PCloud pc = pCloudThread.pCloud;
-        var data = new PointCloudData();
+        var data = ScriptableObject.CreateInstance<PointCloudData>();
         data._pointData = thread.points;
         data.name = "RosCloud";
         var renderer = go.GetComponent<PointCloudRenderer>();
@@ -56,7 +57,7 @@ public class PointCloudManager : MonoBehaviour
             renderer.pointShader = Shader.Find("Point Cloud/Point");
             renderer.diskShader = Shader.Find("Point Cloud/Disk");
 
-            renderer.pointSize = 0.0f;
+            renderer.pointSize = pointSize;
         }
         Destroy(renderer.sourceData);
         renderer.sourceData = data;

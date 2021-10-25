@@ -11,11 +11,15 @@ namespace Pcx
     {
         #region Editable attributes
 
+        public bool renderingEnabled = true;
+
         [SerializeField] PointCloudData _sourceData = null;
 
         public PointCloudData sourceData {
             get { return _sourceData; }
-            set { _sourceData = value; }
+            set { 
+                _sourceData = value;
+            }
         }
 
         [SerializeField] Color _pointTint = new Color(0.5f, 0.5f, 0.5f, 1);
@@ -62,7 +66,7 @@ namespace Pcx
         #region Private objects
 
         Material _pointMaterial;
-        Material _diskMaterial;
+        public Material _diskMaterial { private set; get; }
 
         #endregion
 
@@ -92,6 +96,9 @@ namespace Pcx
 
         void OnRenderObject()
         {
+            if (!renderingEnabled)
+                return;
+            //Debug.Log("OnRenderObject");
             // We need a source data or an externally given buffer.
             if (_sourceData == null && sourceBuffer == null) return;
 
