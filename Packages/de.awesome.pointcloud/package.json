@@ -1,0 +1,14 @@
+{
+    "name": "de.awesome.pointcloud",
+    "version": "0.0.1",
+    "displayName": "Binary PointCloud WebSocket receiver",
+    "description": "Binary PointCloud WebSocket receiver",
+    "unity": "2021.1",
+    "dependencies": {
+      "jp.keijiro.pcx": "1.0.0"
+   },
+    "author": {
+      "name": "Awesome Technologies",
+      "email": "sven.kunze@awesome-technologies.de"
+    }
+  }

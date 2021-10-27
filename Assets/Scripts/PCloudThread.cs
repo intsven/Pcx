@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
+using Awesome.Pointcloud;
 
 public class PCloudThread
 {

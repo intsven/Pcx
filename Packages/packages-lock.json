@@ -7,8 +7,24 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.ext.nunit": {
+      "version": "1.0.6",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ide.visualstudio": {
+      "version": "2.0.11",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.memoryprofiler": {
-      "version": "0.2.8-preview.2",
+      "version": "0.4.2-preview.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -16,8 +32,19 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.test-framework": {
+      "version": "1.1.27",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ext.nunit": "1.0.6",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.timeline": {
-      "version": "1.4.2",
+      "version": "1.5.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -27,6 +54,14 @@
         "com.unity.modules.particlesystem": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "de.awesome.pointcloud": {
+      "version": "file:de.awesome.pointcloud",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "jp.keijiro.pcx": "1.0.0"
+      }
     },
     "jp.keijiro.pcx": {
       "version": "file:jp.keijiro.pcx",

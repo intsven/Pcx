@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
 using Pcx;
+using Awesome.Pointcloud;
 
 namespace RosSharp.RosBridgeClient
 {
