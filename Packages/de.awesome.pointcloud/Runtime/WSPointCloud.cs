@@ -8,11 +8,13 @@ using WebSocketSharp;
 
 namespace Awesome.Pointcloud
 {
+    [RequireComponent(typeof(PointCloudRenderer))]
     public class WSPointCloud : WSClient
     {
         byte[] data;
         bool applied = false;
         PointCloudRenderer renderer;
+        ComputeBuffer buffer;
         // Start is called before the first frame update
         public new void Start()
         {
@@ -25,8 +27,10 @@ namespace Awesome.Pointcloud
         {
             if (data != null && data.Length > 0 && !applied)
             {
-                renderer.sourceBuffer = new ComputeBuffer(data.Length, 16);
-                renderer.sourceBuffer.SetData(data);
+                buffer = new ComputeBuffer(data.Length, 16);
+                buffer.SetData(data);
+                var pcdata = ScriptableObject.CreateInstance<PointCloudData>();
+                renderer.sourceData = pcdata;
                 //data = null;
                 applied = true;
             }
